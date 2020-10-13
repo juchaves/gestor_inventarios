@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gestor_inventarios", "gestor_inventarios\gestor_inventarios.csproj", "{DEACFE65-7A4D-47EF-B6F9-9DFEE4760B45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gestor_inventarios", "gestor_inventarios\gestor_inventarios.csproj", "{DEACFE65-7A4D-47EF-B6F9-9DFEE4760B45}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "interfaz_usuario_inventario", "InterfazUsuarioInventario\interfaz_usuario_inventario.csproj", "{7ED0FEC1-4EDA-4BAA-ABAD-C5B568DA3C62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pruebas_unitarias", "pruebas_unitarias\pruebas_unitarias.csproj", "{0113BC64-6CF3-4FCE-92FD-0437311B073A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{DEACFE65-7A4D-47EF-B6F9-9DFEE4760B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEACFE65-7A4D-47EF-B6F9-9DFEE4760B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEACFE65-7A4D-47EF-B6F9-9DFEE4760B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ED0FEC1-4EDA-4BAA-ABAD-C5B568DA3C62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ED0FEC1-4EDA-4BAA-ABAD-C5B568DA3C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ED0FEC1-4EDA-4BAA-ABAD-C5B568DA3C62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ED0FEC1-4EDA-4BAA-ABAD-C5B568DA3C62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0113BC64-6CF3-4FCE-92FD-0437311B073A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0113BC64-6CF3-4FCE-92FD-0437311B073A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0113BC64-6CF3-4FCE-92FD-0437311B073A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0113BC64-6CF3-4FCE-92FD-0437311B073A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
