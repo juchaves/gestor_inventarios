@@ -60,7 +60,7 @@ namespace InterfazUsuarioInventario.Controllers
                     Id = int.Parse(collection["Id"].ToString()),
                     Nombre = collection["Nombre"].ToString(),
                     FechaCaducidad = DateTime.Parse(collection["FechaCaducidad"].ToString()),
-                    Tipo = collection["Id"].ToString(),
+                    Tipo = collection["Tipo"].ToString(),
                     Expirado = bool.Parse(collection["Expirado"].ToString()),
                 };
                 
@@ -96,7 +96,7 @@ namespace InterfazUsuarioInventario.Controllers
                     Id = int.Parse(collection["Id"].ToString()),
                     Nombre = collection["Nombre"].ToString(),
                     FechaCaducidad = DateTime.Parse(collection["FechaCaducidad"].ToString()),
-                    Tipo = collection["Id"].ToString(),
+                    Tipo = collection["Tipo"].ToString(),
                     Expirado = bool.Parse(collection["Expirado"].ToString()),
                 };
 

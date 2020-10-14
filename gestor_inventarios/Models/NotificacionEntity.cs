@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace gestor_inventarios.Models
     /// </summary>
     public class NotificacionEntity
     {
+        [Key]
         public int Id { get; set; }
         public DateTime Fecha { get; set; }
         public string Tipo { get; set; }

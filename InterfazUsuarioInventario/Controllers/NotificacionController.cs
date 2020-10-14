@@ -4,48 +4,66 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using gestor_inventarios.Models;
+using interfaz_usuario_inventario.Servicios;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
 namespace InterfazUsuarioInventario.Controllers
 {
     public class NotificacionController : Controller
     {
-        const string URL_BASE_PERSISTENCIA = "http://localhost:6543/api/producto";
+        private INotificacionService ObtenerServicio()
+        {
+            var services = new ServiceCollection();
+            services.UseServices();
+            var serviceProvider = services.BuildServiceProvider();
+            INotificacionService servicioProductos = serviceProvider.GetRequiredService<INotificacionService>();
+            return servicioProductos;
+        }
 
         // GET: NotificacionController
         public async Task<ActionResult> Index()
         {
-            var httpClient = new HttpClient();
-            var json = await httpClient.GetStringAsync(URL_BASE_PERSISTENCIA);
-            List<NotificacionEntity> productos = JsonConvert.DeserializeObject<List<NotificacionEntity>>(json);
-            return View(productos);
+            INotificacionService servicioNotificaciones = ObtenerServicio();
+            List<NotificacionEntity> notificacionesAsync = await servicioNotificaciones.GetNotificacionesAsync();
+            return View(notificacionesAsync);
         }
 
         // GET: NotificacionController/Details/5
         public async Task<ActionResult> Details(int id)
         {
-            var httpClient = new HttpClient();
-            var json = await httpClient.GetStringAsync(URL_BASE_PERSISTENCIA + "/" + id);
-            NotificacionEntity notificacion = JsonConvert.DeserializeObject<NotificacionEntity>(json);
-            return View(notificacion);
+            INotificacionService servicioNotificaciones = ObtenerServicio();
+            NotificacionEntity notificacionAsync = await servicioNotificaciones.GetNotificacionAsync(id);
+            return View(notificacionAsync);
         }
 
         // GET: NotificacionController/Create
         public ActionResult Create()
         {
-
             return View();
         }
 
         // POST: NotificacionController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(IFormCollection collection)
         {
             try
             {
+                INotificacionService servicioNotificaciones = ObtenerServicio();
+                string strAux = DateTime.Now.ToString();
+                NotificacionEntity pe = new NotificacionEntity()
+                {
+                    Id = int.Parse(collection["Id"].ToString()),
+                    Descripcion = collection["Descripcion"],
+                    Fecha = DateTime.Parse(collection["Fecha"].ToString()),
+                    Tipo = collection["Id"].ToString(),
+                };
+
+
+                NotificacionEntity pc = await servicioNotificaciones.CreateNotificacionAsync(pe);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -55,18 +73,31 @@ namespace InterfazUsuarioInventario.Controllers
         }
 
         // GET: NotificacionController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            INotificacionService servicioNotificaciones = ObtenerServicio();
+            NotificacionEntity notificacionAsync = await servicioNotificaciones.GetNotificacionAsync(id);
+            return View(notificacionAsync);
         }
 
         // POST: NotificacionController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, IFormCollection collection)
         {
             try
             {
+                INotificacionService servicioNotificaciones = ObtenerServicio();
+                string strAux = DateTime.Now.ToString();
+                NotificacionEntity pe = new NotificacionEntity()
+                {
+                    Id = int.Parse(collection["Id"].ToString()),
+                    Descripcion = collection["Descripcion"],
+                    Fecha = DateTime.Parse(collection["Fecha"].ToString()),
+                    Tipo = collection["Id"].ToString(),
+                };
+
+                NotificacionEntity pm = await servicioNotificaciones.UpdateNotificacionAsync(pe);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -76,18 +107,22 @@ namespace InterfazUsuarioInventario.Controllers
         }
 
         // GET: NotificacionController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            INotificacionService servicioNotificaciones = ObtenerServicio();
+            NotificacionEntity notificacionAsync = await servicioNotificaciones.GetNotificacionAsync(id);
+            return View(notificacionAsync);
         }
 
         // POST: NotificacionController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, IFormCollection collection)
         {
             try
             {
+                INotificacionService servicioNotificaciones = ObtenerServicio();
+                await servicioNotificaciones.DeleteNotificacionAsync(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

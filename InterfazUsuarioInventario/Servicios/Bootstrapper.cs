@@ -12,6 +12,7 @@ namespace interfaz_usuario_inventario.Servicios
         public static void UseServices( this IServiceCollection services )
         {
             services.AddHttpClient<IProductoService, ProductoService>();
+            services.AddHttpClient<INotificacionService, NotificacionService>();
         }
     }
 }

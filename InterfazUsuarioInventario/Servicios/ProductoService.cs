@@ -21,7 +21,7 @@ namespace interfaz_usuario_inventario.Servicios
 
         public async Task<List<ProductoEntity>> GetProductosAsync()
         {
-            var httpResponse = await _client.GetAsync($"{BaseUrl}");
+            var httpResponse = await _client.GetAsync($"{BaseUrl}/");
 
             if (!httpResponse.IsSuccessStatusCode)
             {
@@ -36,7 +36,7 @@ namespace interfaz_usuario_inventario.Servicios
 
         public async Task<ProductoEntity> GetProductoAsync(int id)
         {
-            var httpResponse = await _client.GetAsync($"{BaseUrl}{id}");
+            var httpResponse = await _client.GetAsync($"{BaseUrl}/{id}/");
 
             if (!httpResponse.IsSuccessStatusCode)
             {
@@ -52,7 +52,7 @@ namespace interfaz_usuario_inventario.Servicios
         public async Task<ProductoEntity> CreateProductoAsync(ProductoEntity producto)
         {
             var content = JsonConvert.SerializeObject(producto);
-            var httpResponse = await _client.PostAsync(BaseUrl, new StringContent(content, Encoding.Default, "application/json"));
+            var httpResponse = await _client.PostAsync($"{BaseUrl}/", new StringContent(content, Encoding.Default, "application/json"));
 
             if (!httpResponse.IsSuccessStatusCode)
             {
@@ -66,7 +66,7 @@ namespace interfaz_usuario_inventario.Servicios
         public async Task<ProductoEntity> UpdateProductoAsync(ProductoEntity producto)
         {
             var content = JsonConvert.SerializeObject(producto);
-            var httpResponse = await _client.PutAsync($"{BaseUrl}{producto.Id}", new StringContent(content, Encoding.Default, "application/json"));
+            var httpResponse = await _client.PutAsync($"{BaseUrl}/{producto.Id}/", new StringContent(content, Encoding.Default, "application/json"));
 
             if (!httpResponse.IsSuccessStatusCode)
             {
@@ -80,7 +80,7 @@ namespace interfaz_usuario_inventario.Servicios
 
         public async Task DeleteProductoAsync(int id)
         {
-            var httpResponse = await _client.DeleteAsync($"{BaseUrl}{id}");
+            var httpResponse = await _client.DeleteAsync($"{BaseUrl}/{id}/");
 
             if (!httpResponse.IsSuccessStatusCode)
             {
