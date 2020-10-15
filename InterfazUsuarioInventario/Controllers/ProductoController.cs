@@ -61,7 +61,7 @@ namespace InterfazUsuarioInventario.Controllers
                     Nombre = collection["Nombre"].ToString(),
                     FechaCaducidad = DateTime.Parse(collection["FechaCaducidad"].ToString()),
                     Tipo = collection["Tipo"].ToString(),
-                    Expirado = bool.Parse(collection["Expirado"].ToString()),
+                    Expirado = collection["Expirado"].ToString(),
                 };
                 
                 
@@ -97,7 +97,7 @@ namespace InterfazUsuarioInventario.Controllers
                     Nombre = collection["Nombre"].ToString(),
                     FechaCaducidad = DateTime.Parse(collection["FechaCaducidad"].ToString()),
                     Tipo = collection["Tipo"].ToString(),
-                    Expirado = bool.Parse(collection["Expirado"].ToString()),
+                    Expirado = collection["Expirado"].ToString(),
                 };
 
                 ProductoEntity pm = await servicioProductos.UpdateProductoAsync(pe);

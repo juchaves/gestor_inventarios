@@ -25,7 +25,7 @@ namespace pruebas_unitarias
                 Nombre = "MANZANAS",
                 FechaCaducidad = DateTime.Parse( "2021-07-26T00:00:00" ),
                 Tipo = "PRUEBAS DE CREATE 1",
-                Expirado = false
+                Expirado = ""
             }); ;
             Assert.Equal(201, createdTask.Id);
         }
@@ -85,10 +85,10 @@ namespace pruebas_unitarias
                 Nombre = "PERAS",
                 FechaCaducidad = DateTime.Parse("2021-07-26T00:00:00"),
                 Tipo = "PRUEBAS DE UPDATE 1",
-                Expirado = false
+                Expirado = ""
             }); ;
 
-            Assert.True(!updatedProducto.Expirado);
+            Assert.True(!updatedProducto.Expirado.Equals("SI"));
         }
     }
 }

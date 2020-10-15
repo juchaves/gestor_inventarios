@@ -32,8 +32,8 @@ namespace gestor_inventarios.Jobs
         private void DoWork(object state)
         {
             _logger.LogInformation("Timed Background Service is working.");
-            List<ProductoEntity> productosExpirados = ProductoController.listaProductos.FindAll(p => !p.Expirado && p.FechaCaducidad <= System.DateTime.Now);
-            productosExpirados.ForEach(p => p.Expirado = true);
+            List<ProductoEntity> productosExpirados = ProductoController.listaProductos.FindAll(p => !p.Expirado.Equals("SI") && p.FechaCaducidad <= System.DateTime.Now);
+            productosExpirados.ForEach(p => p.Expirado = "SI");
             int iAux = NotificacionController.listaNotificaciones.Count;
             productosExpirados.ForEach(p => NotificacionController.listaNotificaciones.Add(new NotificacionEntity() { Id = iAux++, Fecha = System.DateTime.Now, Tipo = "EXPIRACION", Descripcion = "Expira el producto [" + p.Id + "]" }));
         }

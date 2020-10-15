@@ -16,6 +16,6 @@ namespace gestor_inventarios.Models
         public string Nombre { get; set; }
         public DateTime FechaCaducidad { get; set; }
         public string Tipo { get; set; }
-        public bool Expirado { get; set; }
+        public string Expirado { get; set; }
     }
 }
